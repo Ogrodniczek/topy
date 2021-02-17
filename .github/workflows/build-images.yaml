@@ -6,10 +6,10 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     steps:
-    - id: repository
+    - id: actor
       uses: ASzc/change-string-case-action@v1
       with:
-          string: ${{ github.repository }}
+          string: ${{ github.actor }}
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build container image
@@ -17,4 +17,4 @@ jobs:
       with:
           context: node/
           push: true
-          tags: ${{ steps.repository.outputs.lowercase }}/node:${{ github.sha }}
+          tags: ghcr.io/${{ steps.actor.outputs.lowercase }}/node:${{ github.sha }}
