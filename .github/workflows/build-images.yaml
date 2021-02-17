@@ -6,9 +6,9 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     steps:
-      - id: repository
-        uses: ASzc/change-string-case-action@v1
-        with:
+    - id: repository
+      uses: ASzc/change-string-case-action@v1
+      with:
           string: ${{ github.repository }}
     - name: Checkout
       uses: actions/checkout@v2
