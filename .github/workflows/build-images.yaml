@@ -13,4 +13,4 @@ jobs:
       with:
           context: node/
           push: true
-          tags: "$GITHUB_ACTOR/$GITHUB_REPOSITORY:$GITHUB_SHA"
+          tags: github.actor/github.repository:github.sha
