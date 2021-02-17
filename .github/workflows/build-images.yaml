@@ -4,11 +4,10 @@ on:
     branches: ['main']
 jobs:
   build-and-push-image:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Copy Repo Files
+      runs-on: ubuntu-latest
+      steps:
+      - name: Copy Repo Files
         uses: actions/checkout@master
-
       - name: Publish Docker Image to GPR
         uses: machine-learning-apps/gpr-docker-publish@master
         id: docker
