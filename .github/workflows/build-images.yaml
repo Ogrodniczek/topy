@@ -6,11 +6,15 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Build container image
-      uses: docker/build-push-action@v2
-      with:
-          context: node/
-          push: true
-          tags: ghcr.io/${{ github.actor }}/node:${{ github.sha }}
+    - name: Copy Repo Files
+        uses: actions/checkout@master
+
+      - name: Publish Docker Image to GPR
+        uses: machine-learning-apps/gpr-docker-publish@master
+        id: docker
+        with:
+          IMAGE_NAME: 'test-docker-action'
+          DOCKERFILE_PATH: 'node/Dockerfile'
+          BUILD_CONTEXT: 'node/'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
